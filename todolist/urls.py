@@ -1,10 +1,11 @@
 from django.contrib import admin
 from django.urls import path
-from todo.views import home
-from todo.views import type
+from todo.views import *
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path('type/', type),
+    path('create_todo/', create_todo_view),
 ]

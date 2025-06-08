@@ -11,16 +11,16 @@
    <table class="table table-striped">
   <thead>
     <tr>
-      <th scope="col">ID</th>
+      <th scope="col">#</th>
       <th scope="col">Name</th>
-      <th scope="col">Task</th>
-      <th scope="col">Progress</th>
+      <th scope="col">Task Description</th>
+      <th scope="col">Status</th>
     </tr>
   </thead>
   <tbody>
-    {% for Task in Tasks%}
+    {% for Task in Tasks %}
         <tr>
-        <td>{{todo.id}}</td>
+        <td>{{forloop.counter}}</td>
         <td>{{Task.name}}</td>
         <td>{{Task.description}}</td>
         <td>{{Task.status}}</td>

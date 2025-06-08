@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Todo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous">
+</head>
+<body>
+<div class="col-6 mx-auto card p-3 shadow-lg">
+<form method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <div class="mb-3">
+    <textarea class="form-control" name="name" required placeholder="Name" id="name" rows="1"></textarea>
+  </div>
+  <div class="mb-3">
+    <textarea class="form-control" name="description" required placeholder="To-Do Description" id="description" rows="3"></textarea>
+  </div>
+  <div class="mb-3">
+    <select class="form-select" id="status" name="status" required aria-label="Default select example">
+    <option selected>Select Task Status</option>
+    <option value="Completed">Completed</option>
+    <option value="Ongoing">Ongoing</option>
+    <option value="Pending">Pending</option>
+  </select>
+  </div>
+  <button type="submit" class="btn btn-success">Submit</button>
+</form>
+</div>
+  <table class="table">
+  <thead>
+    <tr>
+      <th scope="col">#</th>
+      <th scope="col">Name</th>
+      <th scope="col">Task Description</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for Task in Tasks %}
+    <tr>
+      <th scope="row">{{ forloop.counter }}</th>
+      <td>{{ Task.name }}</td>
+      <td>{{ Task.description }}</td>
+      <td>{{ Task.status }}</td>
+      <td>{% comment %} <a href="/delete-receipe/{{ receipe.id }}" class="btn btn-danger">Delete</a>
+          <a href="/update-receipe/{{ receipe.id }}" class="btn btn-success">Update</a> {% endcomment %}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" integrity="sha384-j1CDi7MgGQ12Z7Qab0qlWQ/Qqz24Gc6BM0thvEMVjHnfYGF0rmFCozFSxQBxwHKO" crossorigin="anonymous"></script>
+</body>
+</html>
