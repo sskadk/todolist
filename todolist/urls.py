@@ -7,6 +7,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home),
     path('type/', type),
+    path('create_type/type/', type),
     path('create_todo/', create_todo_view),
     path('create_type/', create_type_view),
 ]
