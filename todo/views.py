@@ -4,12 +4,15 @@ from .models import Todo
 from .models import Type
 
 def home(request):
-    TodoList = Todo.objects.all()
-    return render(request, 'index.html', context={'Tasks': TodoList})
+    return render(request, 'index.html')
 
-def type(request):
+def todo_view(request):
+    TodoList = Todo.objects.all()
+    return render(request, 'todo_page.html', context={'Tasks': TodoList})
+
+def type_view(request):
     types = Type.objects.all()
-    return render(request, 'type.html', context={'types': types})
+    return render(request, 'type_page.html', context={'types': types})
 
 def create_todo_view(request):
     if request.method == 'POST':
@@ -30,6 +33,5 @@ def create_type_view(request):
 
         Type.objects.create(type_name=type_name,
                             type_description=type_description,)
-                            
-    
+                                
     return render(request, 'create_type.html')
