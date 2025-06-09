@@ -22,3 +22,14 @@ def create_todo_view(request):
                             task_status=task_status)
         
     return render(request, 'create_todo.html')
+
+def create_type_view(request):
+    if request.method == 'POST':
+        type_name = request.POST.get('type_name')
+        type_description = request.POST.get('type_description')
+
+        Type.objects.create(type_name=type_name,
+                            type_description=type_description,)
+                            
+    
+    return render(request, 'create_type.html')

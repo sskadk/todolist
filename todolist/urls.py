@@ -8,4 +8,5 @@ urlpatterns = [
     path('', home),
     path('type/', type),
     path('create_todo/', create_todo_view),
+    path('create_type/', create_type_view),
 ]

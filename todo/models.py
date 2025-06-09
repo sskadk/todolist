@@ -7,4 +7,5 @@ class Todo(models.Model):
     task_status = models.CharField(max_length=50)
 
 class Type(models.Model):
-    name = models.CharField(max_length=300)
+    type_name = models.CharField(max_length=300)
+    type_description = type_description = models.TextField()
