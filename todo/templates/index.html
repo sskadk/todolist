@@ -21,9 +21,9 @@
     {% for Task in Tasks %}
         <tr>
         <td>{{forloop.counter}}</td>
-        <td>{{Task.name}}</td>
-        <td>{{Task.description}}</td>
-        <td>{{Task.status}}</td>
+        <td>{{Task.task_name}}</td>
+        <td>{{Task.task_description}}</td>
+        <td>{{Task.task_status}}</td>
         </tr>
     {% endfor %}
   </tbody>

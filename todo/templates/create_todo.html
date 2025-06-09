@@ -11,13 +11,13 @@
 <form method="post" enctype="multipart/form-data">
   {% csrf_token %}
   <div class="mb-3">
-    <textarea class="form-control" name="name" required placeholder="Name" id="name" rows="1"></textarea>
+    <textarea class="form-control" name="task_name" required placeholder="Name" id="name" rows="1"></textarea>
   </div>
   <div class="mb-3">
-    <textarea class="form-control" name="description" required placeholder="To-Do Description" id="description" rows="3"></textarea>
+    <textarea class="form-control" name="task_description" required placeholder="To-Do Description" id="description" rows="3"></textarea>
   </div>
   <div class="mb-3">
-    <select class="form-select" id="status" name="status" required aria-label="Default select example">
+    <select class="form-select" id="task_status" name="task_status" required aria-label="Default select example">
     <option selected>Select Task Status</option>
     <option value="Completed">Completed</option>
     <option value="Ongoing">Ongoing</option>
@@ -41,9 +41,9 @@
     {% for Task in Tasks %}
     <tr>
       <th scope="row">{{ forloop.counter }}</th>
-      <td>{{ Task.name }}</td>
-      <td>{{ Task.description }}</td>
-      <td>{{ Task.status }}</td>
+      <td>{{ Task.task_name }}</td>
+      <td>{{ Task.task_description }}</td>
+      <td>{{ Task.task_status }}</td>
       <td>{% comment %} <a href="/delete-receipe/{{ receipe.id }}" class="btn btn-danger">Delete</a>
           <a href="/update-receipe/{{ receipe.id }}" class="btn btn-success">Update</a> {% endcomment %}</td>
     </tr>

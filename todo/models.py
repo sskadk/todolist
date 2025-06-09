@@ -2,12 +2,9 @@ from django.db import models
 
 
 class Todo(models.Model):
-    name = models.CharField(max_length=255)
-    description = models.TextField()
-    status = models.CharField(max_length=50)
-
-    def __str__(self):
-        return self.name
+    task_name = models.CharField(max_length=255)
+    task_description = models.TextField()
+    task_status = models.CharField(max_length=50)
 
 class Type(models.Model):
     name = models.CharField(max_length=300)
