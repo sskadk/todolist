@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from .models import Todo
 from .models import Type
@@ -25,6 +25,7 @@ def create_todo_view(request):
                             task_status=task_status)
         
     return render(request, 'create_todo.html')
+
 
 def create_type_view(request):
     if request.method == 'POST':
