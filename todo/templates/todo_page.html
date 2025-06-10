@@ -15,6 +15,7 @@
       <th scope="col">Name</th>
       <th scope="col">Task Description</th>
       <th scope="col">Status</th>
+      <th scope="col">Actions</th>
     </tr>
   </thead>
   <tbody>
@@ -24,6 +25,7 @@
         <td>{{Task.task_name}}</td>
         <td>{{Task.task_description}}</td>
         <td>{{Task.task_status}}</td>
+        <td><a href="{% url 'update-todo' pk=Task.id%}"><button type="button" class= "btn btn-warning">Edit</button></a></td>
         </tr>
     {% endfor %}
   </tbody>

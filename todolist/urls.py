@@ -10,4 +10,5 @@ urlpatterns = [
     path('type/', type_view),
     path('create_todo/', create_todo_view),
     path('create_type/', create_type_view),
+    path('update_todo/<int:pk>/', update_todo_view, name="update-todo"),
 ]
