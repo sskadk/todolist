@@ -25,7 +25,7 @@
         <li class="nav-item">
           <form class="d-flex" role="search" method="get" action="{% url 'todo_search' %}">
             {% csrf_token %}
-            <input class="form-control me-2" name="q" type="search" placeholder="Search" aria-label="Search"/>
+            <input class="form-control me-2" name="q" type="search" placeholder="Enter Todo" aria-label="Search"/>
             <button class="btn btn-outline-success" type="submit">Search</button>
           </form>        
         </li>
