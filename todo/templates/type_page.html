@@ -13,6 +13,7 @@
       <th scope="col">#</th>
       <th scope="col">Type Name</th>
       <th scope="col">Type Description</th>
+      <th scope="col">Actions</th>
       
     </tr>
   <tbody>
@@ -21,6 +22,8 @@
         <th scope="row">{{forloop.counter}}</th>
         <td>{{type.type_name}}</td>
         <td>{{type.type_description}}</td>
+        <td><a href="{% url 'update-type' pk=type.id%}"><button type="button" class= "btn btn-warning">Edit</button></a>
+            <a href="{% url 'delete-type' pk=type.id%}"><button type="button" class= "btn btn-danger">Delete</button></a></td>
         
         </tr>
     {% endfor %}

@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from .models import Todo
 from .models import Type
 from .forms import TodoForm
+from .forms import TypeForm
 
 def home(request):
     return render(request, 'index.html')
@@ -41,4 +42,27 @@ def create_type_view(request):
 def update_todo_view(request, pk):
     todo_obj = Todo.objects.get(id=pk)
     todo_form = TodoForm(instance=todo_obj)
+    if request.method == "POST":
+        todo_form = TodoForm(instance=todo_obj, data=request.POST)
+        if todo_form.is_valid():
+            todo_form.save()
     return render(request, 'update_todo.html', context={'form':todo_form})
+
+def delete_todo_view(request, pk):
+    todo_obj = Todo.objects.get(id=pk)
+    todo_obj.delete()
+    return redirect('/todo')
+
+def update_type_view(request, pk):
+    type_obj = Type.objects.get(id=pk)
+    type_form = TypeForm(instance=type_obj)
+    if request.method == "POST":
+        type_form = TypeForm(instance=type_obj, data=request.POST)
+        if type_form.is_valid():
+            type_form.save()
+    return render(request, 'update_type.html', context={'form':type_form})
+
+def delete_type_view(request, pk):
+    type_obj = Type.objects.get(id=pk)
+    type_obj.delete()
+    return redirect('/type')

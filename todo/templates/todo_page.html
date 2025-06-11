@@ -25,7 +25,8 @@
         <td>{{Task.task_name}}</td>
         <td>{{Task.task_description}}</td>
         <td>{{Task.task_status}}</td>
-        <td><a href="{% url 'update-todo' pk=Task.id%}"><button type="button" class= "btn btn-warning">Edit</button></a></td>
+        <td><a href="{% url 'update-todo' pk=Task.id%}"><button type="button" class= "btn btn-warning">Edit</button></a>
+            <a href="{% url 'delete-todo' pk=Task.id%}"><button type="button" class= "btn btn-danger">Delete</button></a></td>
         </tr>
     {% endfor %}
   </tbody>
