@@ -40,6 +40,25 @@ def search_todo_view(request):
     return render(request, 'todo_page.html', {'Tasks': results})
 
 
+
+# def unified_search_view(request):
+#     query = request.GET.get('q', '').strip()
+
+#     todo_results = Todo.objects.filter(
+#         Q(task_name__icontains=query) | Q(task_description__icontains=query)
+#     ) if query else []
+
+#     type_results = Type.objects.filter(
+#         Q(type_name__icontains=query) | Q(type_description__icontains=query)
+#     ) if query else []
+
+#     return render(request, 'search_results.html', {
+#         'query': query,
+#         'todo_results': todo_results,
+#         'type_results': type_results
+#     })
+
+
 def create_type_view(request):
     if request.method == 'POST':
         type_name = request.POST.get('type_name')
