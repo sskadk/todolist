@@ -4,6 +4,7 @@ from .models import Todo
 from .models import Type
 from .forms import TodoForm
 from .forms import TypeForm
+from django.db.models import Q
 
 def home(request):
     return render(request, 'index.html')
@@ -21,21 +22,31 @@ def create_todo_view(request):
         task_name = request.POST.get('task_name')
         task_description = request.POST.get('task_description')
         task_status = request.POST.get('task_status')
-
         Todo.objects.create(task_name=task_name, 
                             task_description=task_description, 
                             task_status=task_status)
+        return redirect('/todo')
         
     return render(request, 'create_todo.html')
+
+def search_todo_view(request):
+    query = request.GET.get('q', '')
+    results = Todo.objects.filter(
+        Q(task_name__icontains=query) |
+        Q(task_description__icontains=query) |
+        Q(task_status__icontains=query) 
+    ) if query else Todo.objects.all() 
+    
+    return render(request, 'todo_page.html', {'Tasks': results})
 
 
 def create_type_view(request):
     if request.method == 'POST':
         type_name = request.POST.get('type_name')
         type_description = request.POST.get('type_description')
-
         Type.objects.create(type_name=type_name,
                             type_description=type_description,)
+        return redirect('/type')
                                 
     return render(request, 'create_type.html')
 
